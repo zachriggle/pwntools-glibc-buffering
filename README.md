@@ -7,7 +7,9 @@ Glibc's buffering has three modes for stdout:
 - Unbuffered (stdin and stdout are both terminals)
 
 
+## Both PTYs
 
+Here is the behavior one would see in an interactive terminal.
 
 ```
 $ python demo.py DEBUG STDIN=PTY STDOUT=PTY
@@ -29,6 +31,9 @@ $ python demo.py DEBUG STDIN=PTY STDOUT=PTY
     'G'
 ```
 
+## Stdout is a PTY
+
+Here is the default pwntools behavior.  Notice that "F" precedes "Goodbye", and that the timeout is hit before "Goodbye" arrives.
 
 ```
 $ python demo.py DEBUG STDOUT=PTY
@@ -49,6 +54,12 @@ $ python demo.py DEBUG STDOUT=PTY
     '\n'
     'G'
 ```
+
+## Everything is a piip
+
+This is how things work with the `subprocess` module by default, and old versions of Pwntools.
+
+Note that `"Hello"` does not arrive until the buffers are flushed when the binary exits.
 
 ```
 [+] Starting local process './a.out': Done
