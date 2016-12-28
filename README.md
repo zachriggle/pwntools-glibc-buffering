@@ -8,6 +8,9 @@ Glibc's buffering has three modes for stdout:
 - Line buffered (stdout is a terminal)
 - Unbuffered (stdin and stdout are both terminals)
 
+This repository contains an example C program `demo.c` which demonstrates this issue.  Of interest, directly calling `write` avoids any buffering.  This allows us to see that the program has reached a certain state.  Second, it makes use of `printf` which are generally fully-buffered, or line-buffered.  Third, it makes use of one `printf` each which does/does not end with a newline (`"\n"`), which allows us to demonstrate the issues caused by buffering modes.
+
+Included is a sample script, `demo.py`, which demonstrates how the various buffering modes exhibit themselves.  
 
 ## Both PTYs
 
