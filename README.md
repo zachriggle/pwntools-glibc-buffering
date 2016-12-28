@@ -1,5 +1,7 @@
 # pwntools-glibc-buffering
 
+A common issue that people encounter when using Pwntools (or anything else, really) is that the C standard library (glibc, on Ubuntu) performs lots of buffering.  This means that you may not see the results a your `printf` in a challenge binary.
+
 Glibc's buffering has three modes for stdout:
 
 - Fully buffered (stdout is a pipe)
